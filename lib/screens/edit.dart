@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:insta/main.dart';
 import 'package:insta/screens/profile.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -32,11 +33,11 @@ class _EditState extends State<Edit> {
               //  .insert({'name': name.text, 'bio': bio.text, 'profilepath': profilepath});
 
             await supabase
-                .from('userbio')
+                .from('userbio_insta')
                 .upsert({ 'name': name.text, 'bio': bio.text, 'profilepath': profilepath });
 
             print('added to table');
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Upload(),));
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage(),));
           }, child: Text('Apply')),
         ],
       ),

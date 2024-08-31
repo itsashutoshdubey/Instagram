@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:insta/main.dart';
 import 'package:insta/screens/profile.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:uuid/uuid.dart';
@@ -29,7 +30,7 @@ class _UploadPostState extends State<UploadPost> {
         actions: [
           ElevatedButton(onPressed: ()async{
              await supabase
-                .from('post')
+                .from('post_insta')
               .insert({'caption': name.text, 'imagepath': profilepath});
 
          //   await supabase
@@ -37,7 +38,7 @@ class _UploadPostState extends State<UploadPost> {
              //   .upsert({ 'name': name.text, 'bio': bio.text, 'profilepath': profilepath });
 
             print('added to table');
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Upload(),));
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage(),));
           }, child: Text('Post')),
         ],
       ),

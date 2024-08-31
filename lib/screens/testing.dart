@@ -52,7 +52,7 @@ class _Feed1State extends State<Feed1> {
                       backgroundColor: Colors.grey,
                       backgroundImage: NetworkImage('${supabase.storage.from('image').getPublicUrl('${data[index]["profile_image"]}')}')
                   ),
-                  title: Text('${data[index]["username"]}', style: TextStyle(fontWeight: FontWeight.bold)),
+                  title: Text('${data[index]["id"]}', style: TextStyle(fontWeight: FontWeight.bold)),
                   trailing: Icon(Icons.more_horiz),
                 ),
                 Container(
@@ -101,7 +101,7 @@ class _Feed1State extends State<Feed1> {
 
   Future<void> Getpost() async {
     final supabase = Supabase.instance.client;
-    final data1 = await supabase.from('post').select();
+    final data1 = await supabase.from('post_insta').select();
     setState(() {
       data = data1;
     });

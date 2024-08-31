@@ -127,7 +127,7 @@ class _UploadState extends State<Upload> {
                    if(data[index]["id"] == user!.id) return Image.network('${supabase
                        .storage
                        .from('image')
-                       .getPublicUrl('${data[0]["imagepath"].substring(6)}')}', fit: BoxFit.cover,
+                       .getPublicUrl('${data[index]["imagepath"].substring(6)}')}', fit: BoxFit.cover,
                    );
                      else return SizedBox(height: 10,);
                   },
@@ -144,7 +144,7 @@ class _UploadState extends State<Upload> {
     // List? person;
 
     final data = await supabase
-        .from('userbio')
+        .from('userbio_insta')
         .select()
         .eq('id' , user!.id).single();
     print('fetched');
@@ -170,12 +170,14 @@ class _UploadState extends State<Upload> {
 
     final User? user = supabase.auth.currentUser;
     final data1 = await supabase
-        .from('post')
+        .from('post_insta')
         .select();
     setState(() {
       data = data1;
     });
     print('${data[0]["imagepath"].substring(6)}');
+    print('${data[1]["imagepath"].substring(6)}');
+    print('${data[2]["imagepath"].substring(6)}');
   }
   }
 

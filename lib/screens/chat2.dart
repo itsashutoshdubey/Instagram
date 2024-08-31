@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:insta/main.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class Chat2 extends StatefulWidget {
@@ -44,6 +45,9 @@ class Chat2 extends StatefulWidget {
           color: Colors.white,
           child: Row(
             children: <Widget>[
+              TextButton(onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(),));
+              } , child: Icon(Icons.cancel)),
               IconButton(
                 icon: Icon(Icons.photo),
                 iconSize: 25.0,
@@ -65,7 +69,7 @@ class Chat2 extends StatefulWidget {
                 color: Colors.blueAccent,
                 onPressed: ()async {
                   await supabase
-                      .from('chat_2')
+                      .from('chat_insta')
                       .insert({'message': message.text, 'to': widget.to});
                   message.clear();
                 },
@@ -139,7 +143,7 @@ class DBService {
     client = Supabase.instance.client;
   }
   Stream getAllItems() {
-    return client.from("chat_2").stream(primaryKey: ["id"]);
+    return client.from("chat_insta").stream(primaryKey: ["id"]);
   }
 }
 

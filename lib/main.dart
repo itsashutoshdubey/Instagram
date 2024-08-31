@@ -5,6 +5,7 @@ import 'package:insta/screens/login.dart';
 import 'package:insta/screens/signup.dart';
 import 'package:insta/screens/profile.dart';
 import 'package:insta/screens/testing.dart';
+import 'package:insta/screens/uploadpost.dart';
 import 'package:insta/screens/userlist.dart';
 import 'package:insta/screens/userlist1.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -65,7 +66,7 @@ class _HomePageState extends State<HomePage> {
   final List = [
     Feed1(),
     Userlist1(),
-    Edit(),
+    UploadPost(),
     Upload(),
   ];
   @override

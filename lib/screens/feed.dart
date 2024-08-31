@@ -87,7 +87,7 @@ class _FeedState extends State<Feed> {
 
     final User? user = supabase.auth.currentUser;
     final data1 = await supabase
-        .from('post')
+        .from('post_insta')
         .select();
     setState(() {
       data = data1;
